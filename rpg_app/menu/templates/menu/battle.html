@@ -1,0 +1,58 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{ msg | linebreaksbr }}</p></div>
+  
+  
+      <p style="text-align:center">
+        <img id="img" src="{{ mons.image.url }}" alt="モンスター" border="2">
+      </p>
+  
+      <table align="center">
+        <form action="{% url 'battle' data.id mons.id %}" method="post">
+            {% csrf_token %}
+            
+        {% for c in chara %}
+      <td>
+        <table class="msg">
+          <tr>
+            <td>{{c.name}}</td>
+          </tr><tr>
+            <td>LV:{{c.lv}}&ensp;{{c.job}}</td>
+          </tr><tr>
+            <td>HP:{{c.CON}}/{{c.HP}}</td>
+          </tr><tr>
+            <td>力:{{c.STR}} 速:{{c.DEX}} 賢:{{c.INT}} 魔:{{c.INT}}</td>
+          </tr><tr>
+        
+            <select name="{{c.id}}">
+              <option value="戦う">戦う</option>
+              <option value="守る">守る</option>
+            </select>
+          
+          </tr>
+        </table>
+      </td>
+      {% endfor %}
+    
+      <p style="text-align:center"><input type="submit" value="行動" class="submit choice">&ensp;&ensp;&ensp;
+      <input type ="submit" name="逃げる" value="逃げる" class="submit" id="go"></p>
+    </form>
+  </table>
+  
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table class="msg">
+  <tr>
+    <th>name</th>
+    <th>Lv</th>
+    <th>Job</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>{{chara.name}}</td>
+    <td>Lv{{chara.lv}}</td>
+    <td>{{chara.job}}</td>
+    <td>
+      <a href="{% url 'chara_name_change' data.id chara.id %}" >
+        <button>変更</button></a>
+    </td>
+  </tr>
+  </table>
+  
+  <table class="msg">
+  <tr>
+    <th>HP</th><td>{{chara.CON}}/{{chara.HP}}</td>
+  </tr><tr>
+    <th>MP</th><td>{{chara.POW}}</td>
+  </tr><tr>
+    <th>力</th><td>{{chara.STR}}</td>
+  </tr><tr>
+    <th>素早さ</th><td>{{chara.DEX}}</td>
+  </tr><tr>
+    <th>賢さ</th><td>{{chara.INT}}</td>
+  </tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th><a href="{% url 'chara_delete' data.id chara.id %}"><button>キャラクターを削除する</button></a></th>
+  </table>
+  <hr></hr>
+  <br>
+  <a href="{% url 'chara_datas' data.id %}" class="msg">戻る</a>
+  
+</div>
+</body>
+</html>

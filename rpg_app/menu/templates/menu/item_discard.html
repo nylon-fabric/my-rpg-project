@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table class="msg">
+    <tr>
+      <th>name</th><th>Lv</th><th>type</th><th>num</th><th>msg</th>
+    </tr><tr>
+    <td>{{item.item_name}}</td>
+    <td>{{item.item_lv}}</td>
+    <td>{{item.item_type}}</td>
+    <td>{{item.item_num}}</td>
+    <td>{{item.item_comment}}</td>
+    <td>&ensp;&ensp;&ensp;</td>
+    <td>
+      <form action="{% url 'item_discard' item.id data.id %}" method="post">
+      {% csrf_token %}
+    <input type="submit" value="削除">
+    </td>
+    </tr>
+  </table>
+  
+    
+  </form>
+  <a href="{% url 'item_datas' data.id %}" class="msg">やめる</a>
+  
+</div>
+</body>
+</html>

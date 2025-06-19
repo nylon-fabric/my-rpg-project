@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table>
+    <form action="{% url 'account_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+      <tr><th></th><td>
+      <input type="submit" value="アカウント作成">
+      </td></tr>
+    </form>
+  </table>
+  <br>
+  <a href="{% url 'index' %}" class="msg">戻る</a>
+</div>
+</body>
+</html>

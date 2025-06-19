@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table>
+    <td>
+    
+      <table class="msg">
+        <tr>
+          <th><a href="{% url 'item_datas' data.id %}" class="link">
+           item</a></th>
+        </tr><tr>
+          <th><a href="{% url 'chara_datas' data.id %}" class="link">
+           characters</a></th>
+        </tr>
+      </table>
+    </td><td>
+  
+      <table>
+        <tr>
+          <th><a href="{% url 'item_shop' data.id %}">
+            <button class="submit choice">アイテム屋</button></a></th>
+          <th><a href="{% url 'hotel' data.id %}">
+            <button class="submit choice">宿屋</button></a><th>
+          <th>
+            <form action="{% url 'select_choice' data.id %}" method="post">
+              {% csrf_token %}
+            <input type="submit" value="冒険へ" class="submit" id="go">
+            </form>
+          </th>
+        </tr>
+      </table>
+      
+    </td>
+  </table>
+  
+  <hr></hr>
+  <br>
+    <a href="{% url 'index' %}" class="msg">アカウント画面へ</a>
+</div>
+</body>
+</html>

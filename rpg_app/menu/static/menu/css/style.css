@@ -1,0 +1,71 @@
+.middle {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+
+.msg {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #ffffff;
+    background: #000000;
+    color: #ffffff;
+    
+}
+
+.msg p {
+    margin: 0; 
+    padding: 0;
+}
+
+
+.white {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #000000;
+    
+}
+
+.img{
+    text-align: center;
+}
+
+
+.link:link {
+    color: #ffffff;
+    text-decoration:underline;
+}
+
+.link:visited {
+    color: #ffffff;
+    text-decoration:underline;
+}
+
+.link:hover {
+    color:#ffff00;
+    text-decoration:underline;
+}
+
+
+.submit {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 13pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 15px;   /* 余白       */
+    background    : #000000;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+}
+
+
+#go:hover {
+    color: red;
+}
+ 
+ 
+.choice:hover {
+    color: #ffff00;
+}

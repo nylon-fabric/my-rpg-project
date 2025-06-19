@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+
+  <table class="msg">
+    <tr>
+      <th nowrap>name &emsp;</th>
+    <th nowrap>Lv &nbsp;</th>
+    <th nowrap>type&nbsp;</th>
+    <th nowrap>num &nbsp;</th>
+    <th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;
+        msg
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+      <th>&emsp;&emsp;&emsp;</th>
+      <th>&emsp;</th>
+    </tr>
+    {% for i in data.items_set.all %}
+    <tr>
+      <td nowrap>{{i.item_name}}&nbsp;</td>
+    <td nowrap>{{i.item_lv}}&nbsp;</td>
+    <td nowrap>&emsp;{{i.item_type}}&nbsp;</td>
+    <td nowrap align="right">{{i.item_num}}&nbsp;</td>
+      <td>{{i.item_comment}}</td>
+      <td>
+        <a href="{% url 'donjon_item_use' i.id data.id %}"><button>使う</button></a>
+      </td><td><form actino="{% url 'donjon_item' data.id %}" method="post">
+          {% csrf_token %}
+        <input type="submit" name="{{i.id}}" value="捨てる">
+      </form></td>
+    </tr>
+    {% endfor %}
+  </table>
+  
+  <hr></hr>
+  <br>
+  <a href="{% url 'donjon_item_next' data.id %}" class="msg">戻る</a>
+  
+</div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+    <table class="msg">
+      <tr><td>{{chara.name}}</td><td>&ensp;&ensp;</td>
+      <td>{{chara.job}}</td><td>Lv1</td></tr>
+    </table>
+    
+  <div class="middle">
+    <table>
+      <td>
+        <table class="msg">
+          <tr>
+            <th>HP</th><td>{{status.com}}</td>
+          </tr><tr>
+            <th>MP</th><td>{{status.int}}</td>
+          </tr><tr>
+            <th>力</th><td>{{status.str}}</td>
+          </tr><tr>
+            <th>素早さ</th><td>{{status.dex}}</td>
+          </tr><tr>
+            <th>賢さ</th><td>{{status.int}}</td>
+          </tr>
+        </table>
+        
+      </td><td>
+      
+        <table>
+        <form 
+         action="{% url 'chara_create_next' data.id chara.name chara.job %}" 
+         method="post">
+          {% csrf_token %}
+        <tr><td>
+          <input type="submit" name="" value="シャッフル">
+        </td></tr><tr><td>&ensp;&ensp;&ensp;</td></tr><tr><td>
+          <input type="submit" name="create" value="このステータスで作成">
+        </td></tr>
+        </form>
+       </table>
+      </td>
+    </table>
+  </div>
+
+  <hr></hr>
+  <br>
+  <a href="{% url 'chara_datas' data.id %}" class="msg">やめる</a>
+</div>
+</body>
+</html>

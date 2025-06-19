@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table class="msg">
+    <td>
+      <table>
+        <tr>
+          <th>お名前</th><th>残高</th>
+        </tr><tr>
+          <td>{{data.name}}</td>
+          <td>{{data.money}}円</td>
+        </tr>
+      </table></td><td><table>
+        <tr>
+        </tr><tr><td>&nbsp;</td></tr><tr>
+          <td><form action="{% url 'account_remove' data.id %}" 
+           method="post"></td>
+              {% csrf_token %}
+          <td><input type="submit" value="削除"></form></td>
+        </tr>
+      </table>
+    </td>
+  </table>
+  
+  <hr></hr>
+  <br>
+  <a href="javascript:history.go(-1)" class="msg">やめる</a>
+  </div>
+</body>
+</html>

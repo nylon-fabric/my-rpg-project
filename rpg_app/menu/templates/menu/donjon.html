@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+<script type="text/javascript" src="{% static 'menu/js/d_script.js' %}">
+</script>
+</head>
+
+<body>
+<div class="middle">
+
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+
+
+    
+      <p style="text-align:center">
+        <img id="img" src="{% static 'menu/js/media/main.png' %}" 
+        alt="ダンジョン"  border="2">
+      </p>
+
+      <table align="center">
+        <tr>
+          <td></td>
+          <td>
+            <form action="{% url 'donjon' data.id %}" method="post">
+              {% csrf_token %}
+            <input type="submit" name="btn" class="btn" value="▲"></form>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button name="btn" class="btn" id="left">◀</button></td>
+          <td></td>
+          <td><button name="btn" class="btn" id="right">▶</button></td>
+        </tr>
+      </table>
+    
+    <br>
+      <a href="{% url 'donjon_item' data.id %}" class="msg choice">アイテム</a>
+      <a href="{% url 'select_choice' data.id %}" class="msg" id="go">帰還</a>
+    
+  
+</div>
+</body>
+
+</html>

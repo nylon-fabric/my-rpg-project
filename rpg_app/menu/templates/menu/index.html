@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" 
+   href="{% static 'menu/css/style.css' %}" >
+</head>
+
+<body>
+<div class="middle">
+  <h2>{{title}}</h2>
+  
+  <div class="msg"><p>{{msg}}</p></div>
+  
+  <table class="msg">
+  <tr>
+    
+    <th>name&emsp;&emsp;</th>
+    <th>money&emsp;</th>
+    <th></th>
+  </tr>
+  {% for item in data %}
+  <tr>
+    
+    <td>{{item.name}}</td>
+    <td>{{item.money}}&ensp;円</td>
+    <td><a href="{% url 'select_choice' item.id %}" >
+      <button>select</button></a></td>
+      <td>&ensp;&ensp;</td>
+    <td><a href="{% url 'account_name_change' item.id %}" >
+      <button class="btn">name</button></a></td>
+    <td><a href="{% url 'account_remove' item.id %}" >
+      <button>remove</button></a></td>
+  </tr>
+  {% endfor %}
+  </table>
+  
+  <hr></hr>
+  <br>
+  <a href="{% url 'account_create' %}" class="msg">アカウントを作成する</a>
+</div>
+</body>
+</html>
